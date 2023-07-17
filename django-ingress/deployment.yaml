@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+  labels:
+    app: django-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django-project
+  template:
+    metadata:
+      labels:
+        app: django-project
+    spec:
+      containers:
+      - name: my-django-app
+        image: officialyuvi070/my-kube-app
+        ports:
+        - containerPort: 8000
